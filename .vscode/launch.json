@@ -1,0 +1,7 @@
+{
+    "name": "Debug",
+    "type": "python",
+    "request": "launch",
+    "program": "${workspaceFolder}/main.Py",
+    "console": "integratedTerminal"
+}
