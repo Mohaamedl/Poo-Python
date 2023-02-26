@@ -5,6 +5,9 @@ class Shapes:
     def __init__(self,color:str,center:Point):
         self.color = color
         self.center = center
+
+    def __str__(self) :
+        return f'Circle: center = {self.center}, color = {self.color}, '
     def getCenter(self):
         return self.center
     def setCenter(self,c):
@@ -21,6 +24,8 @@ class Rectangle(Shapes):
         self.sideA = sideA
         self.sideB = sideB
         super().__init__(color,point)
+    def __str__(self):
+        return super(Rectangle,self).__str__() +f'side A = {self.sideA}, side B = {self.sideB}'
 
     def getSideA(self):
         return self.sideA
@@ -36,12 +41,15 @@ class Rectangle(Shapes):
     def calPer(self):
         return self.sideA*2 + self.sideB*2
     def draw(self):
-        turtle.goto(self.center.getX(),self.center.getY())
-        turtle.pendown()
-
         turtle.speed(5)
         turtle.pensize(10)
         turtle.pencolor(self.color) 
+        x = self.center.getX()
+        y = self.center.getY()
+        x -= self.sideA / 2 #trocar dependendo da orientação
+        y += self.sideB / 2
+        turtle.goto(x, y) 
+        turtle.pendown()
         turtle.forward(self.sideA)
         turtle.left(90)
         turtle.forward(self.sideB)
@@ -65,19 +73,20 @@ class Square(Shapes):
     def calPer(self):
         return self.side*4
     def draw(self):
-        turtle.goto(self.center.getX(),self.center.getY())
+        turtle.penup()
+        turtle.speed(5)
+        turtle.pensize(10)
+        turtle.pencolor(self.color)
+        x = self.center.getX()
+        y = self.center.getY()
+        x -= self.side / 2
+        y += self.side / 2
+        turtle.goto(x, y)
         turtle.pendown()
 
-        turtle.speed(5)
-        turtle.pensize(self.side/15)
-        turtle.pencolor(self.color) 
-        turtle.forward(self.side)
-        turtle.left(90)
-        turtle.forward(self.side)
-        turtle.left(90)
-        turtle.forward(self.side)
-        turtle.left(90)
-        turtle.forward(self.side)
+        for i in range(4):
+            turtle.forward(self.side)
+            turtle.right(90)
         turtle.penup()
 
 class Circle(Shapes):
@@ -86,7 +95,7 @@ class Circle(Shapes):
         self.radius = radius
         super().__init__(color,center)
     def __str__(self):
-        return f'Circle: radius = {self.radius}, center = {self.center}, color = {self.color}'
+        return f'Circle: center = {self.center}, color = {self.color}, radius = {self.radius}'
     def getRadius(self):
         return self.radius
     def setRadius(self,r):
@@ -96,11 +105,15 @@ class Circle(Shapes):
     def calPer(self):
         return 2*math.pi*self.radius
     def draw(self):
-        turtle.goto(self.center.getX(),self.center.getY()) 
-        turtle.pendown()
-        turtle.speed(self.radius/8)
-        turtle.pensize(self.radius/10)
-        turtle.pencolor(self.color) 
+        turtle.goto(self.center.getX(),self.center.getY())
+        turtle.penup()
+        turtle.right(90)
+        turtle.forward(self.radius)
+        turtle.left(90)
+        turtle.pendown() 
+        turtle.speed(20)
+        turtle.pensize(10)
+        turtle.pencolor(self.color)
         turtle.circle(self.radius)
         turtle.penup()
     def intersect(self,c):

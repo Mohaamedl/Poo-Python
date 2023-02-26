@@ -10,8 +10,8 @@ class Vehicle:
         self.kilometers= kms
     def get_kilometers(self):# returns value of kilometers attribute 
         return self.kilometers
-modelX = Vehicle(240, 18) 
+'''modelX = Vehicle(240, 18) 
 print(modelX.max_speed, modelX.kilometers) 
 modelX.set_kilometers(1000) 
 modelX.set_max_speed(200) 
-print(f"Vehicle has {modelX.kilometers} Km and a max speed of {modelX.max_speed} Kms/h") 
+print(f"Vehicle has {modelX.kilometers} Km and a max speed of {modelX.max_speed} Kms/h") '''
