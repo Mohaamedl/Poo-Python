@@ -1,7 +1,15 @@
 {
-    "name": "Debug",
-    "type": "python",
-    "request": "launch",
-    "program": "${workspaceFolder}/main.Py",
-    "console": "integratedTerminal"
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {"PYTHONPATH": "${cwd}"
+            }
+        }
+        ]
 }

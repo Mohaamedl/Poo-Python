@@ -2,7 +2,7 @@ import re
 class Vehicle:
     def __init__(self,brand:str,color:str,plateNum:str, max_speed:float, kilometers:float):
         try:
-            if  max_speed<0 or kilometers<0 or re.search('[0-9]{2}-[a-zA-Z]{2}-[0-9]{2}',plateNum)==None:
+            if  max_speed<0 or kilometers<0 or re.search('[a-zA-Z]{2}-[0-9]{2}-[0-9]{2}',plateNum)==None:
                 raise Exception('Enter valid values please.')
             self.max_speed=max_speed
             self.kilometers = kilometers
@@ -13,7 +13,7 @@ class Vehicle:
             print(exc)
 
     def __str__(self):
-        return f'{self.brand}: {self.color}, {self.plateNum}, maxSpeed - ({self.max_speed}), kilometers -({self.kilometers}) '
+        return f'{self.plateNum} : {self.brand}, {self.color}, {self.max_speed} km/h, {self.kilometers} km'
     def set_max_speed(self, max_sp): 
         self.max_speed=max_sp
     def get_max_speed(self):# returns value of max_speed attribute 
@@ -22,12 +22,6 @@ class Vehicle:
         self.kilometers= kms
     def get_kilometers(self):# returns value of kilometers attribute 
         return self.kilometers
-    @staticmethod
-    def validPlateNum(pN):
-        value = False
-        if re.search('[0-9]{2}-[a-zA-Z]{2}-[0-9]{2}',pN)!=None:
-            value = True
-        return value
 
 
 
