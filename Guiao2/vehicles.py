@@ -1,6 +1,6 @@
 from Guiao1.vehicle import Vehicle
 
-class EletricVehicle(Vehicle):
+class ElectricVehicle(Vehicle):
     def __init__(self,brand:str,color:str,plateNum:str,
                   max_speed:float, kilometers:float,potency:float,numEngines:int):
         try: 
@@ -17,10 +17,29 @@ class EletricVehicle(Vehicle):
         return self.potency
     def getnumEngines(self):
         return self.numEngines
+    def setPotency(self,p):
+        self.potency = p
+    def setNumEngines(self,nE):
+        self.numEngines = nE
+
     
 
 
     
-class CombustVehicle(Vehicle):
-    pass
-print(EletricVehicle('bmw','red','gt-89-32',23,43,454,3))
+class CombustionVehicle(Vehicle):
+    def __init__(self,brand:str,color:str,plateNum:str,
+                  max_speed:float, kilometers:float,cc:float):
+        try: 
+            if cc<=0:
+                raise Exception('Error in args')
+            super().__init__(brand,color,plateNum, max_speed, kilometers)
+            self.cc = cc
+        except Exception as e:
+            print(e)
+    def __str__(self):
+        return super().__str__() + f', {self.cc} CC'
+print(ElectricVehicle('bmw','red','gt-89-32',23,43,454,3))
+v1 = ElectricVehicle('Tesla','black','DZ-59-27',190,0,100,1)
+v2 = CombustionVehicle('Ferrari','red','OF-00-00',310,0,3000)
+print( v1)
+print(v2)
