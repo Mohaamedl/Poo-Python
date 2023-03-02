@@ -34,7 +34,7 @@ class Product(ABC):
         raise NotImplementedError
     
 class Book(Product):
-    def __init__(self,name,stock,basePrice:float,authors:list=[]):
+    def __init__(self,name,stock,basePrice:float,authors=[]):
         super().__init__(name,stock,basePrice)
         self._authors = set(authors)
 
