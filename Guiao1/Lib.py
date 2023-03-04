@@ -2,7 +2,7 @@ class Book:
     id = 99
     def __init__(self,*args):
         if len(args) ==1 :
-            Book.id +=1
+            self.__class__.id +=1
             self.id = Book.id
             self.title = args[0]
             self.loanType = "NORMAL"

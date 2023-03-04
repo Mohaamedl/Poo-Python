@@ -34,7 +34,7 @@ def teste():
 
 	# lista todos os produtos, com preços, numa tabela		 		
     print("Lista de Todos os Produtos:")
-    print('id nome  stock preço preço ao cliente')
+    print('id       nome                    stock     preço  preço ao cliente')
 
     for prod in lista_produtos:
         print(prod)

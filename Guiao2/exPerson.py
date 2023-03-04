@@ -66,6 +66,12 @@ class Professor(Person):
         s = list(self._ucs)
         s.append(uc)
         self._ucs = set(s)
+    def deletUc(self,uc):
+        s = list(self._ucs)
+        s.remove(uc)
+        self._ucs = set(s) 
+    
+    
 
 
 
@@ -79,20 +85,22 @@ def test():
     p1.setName("Mary Wilson Smith") # by marriage
     p1.setId("CC 23456") # new id
     print(p1)
-    ucss = ['ALGA','CI','CII','CIII','TFE','FMOD','SM','IP','PA','POO','FC']
+    ucss = ['ALGA','CI','CII','CIII','TFE','FMOD','SM','IP','PA','POO','FC','ITW']
     students = []
     profs = []
     for i in range(30):
         if i <25:
-            students.append(Student(names.get_full_name(),
-                                    random.randint(100000,9999999),
-                                    str(random.randint(1,31))+'-'+str(random.randint(1,12))+'-'+str(random.randint(1950,2005)),
-                                    'Fisica',random.randint(10000,900000)))
+            students.append(
+                Student(names.get_full_name(),       
+                        random.randint(100000,9999999),
+                        str(random.randint(1,31))+'/'+str(random.randint(1,12))+'/'+str(random.randint(1950,2005)),
+                        'Fisica',random.randint(10000,900000)))
         else:
-            profs.append(Professor(names.get_full_name(),
-                                    random.randint(100000,99999999),
-                                    str(random.randint(1,31))+'-'+str(random.randint(1,12))+'-'+str(random.randint(1950,2005)),
-                                    random.choices(ucss,k=random.randint(1,11))))
+            profs.append(
+                Professor(names.get_full_name(),
+                        random.randint(100000,99999999),
+                        str(random.randint(1,31))+'/'+str(random.randint(1,12))+'/'+str(random.randint(1950,2000)),
+                        random.choices(ucss,k=random.randint(1,11))))
     classe = []
     classe.extend(profs)
     classe.extend(students)
@@ -101,6 +109,7 @@ def test():
 
 if __name__ == "__main__":
     test()
+    
     
 
 
