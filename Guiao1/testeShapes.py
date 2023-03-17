@@ -1,6 +1,4 @@
-from circle import Circle
-from Rectangle import Rectangle
-from Square import Square
+from Shapes import *
 from point import Point
 circle = Circle('red',Point(1,1),200)
 circle2 = Circle('purple',Point(250,100),250)
