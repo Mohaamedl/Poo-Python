@@ -8,39 +8,38 @@ class Agency:
         self._listVehicles = listVehicles
 
     def __str__(self):
-        pass
+        return f'{self._name} in {self._address} - accommodations: \n'+self.getAccommodations()+'Vehicles :\n'+self.getVehicles()
+
+    def addAccomodation(self,acc):
+        self._listAccommodation.append(acc)
+    def addVehicle(self,veh):
+        self._listVehicles.append(veh)
+    def rentVehicle(self,brand,model,plateNum):
+        for car in self._listVehicles:
+            if car._brand == brand and car._model == model  and car._plateNum ==plateNum:
+                car.rent()
+    def devolutionVehicle(self,brand,model,plateNum):
+        for car in self._listVehicles:
+            if car._brand == brand and car._model == model  and car._plateNum ==plateNum:
+                car.devolution()
+    def rentAccomodation(self,name,address):
+        for acc in self._listAccommodation:
+            if acc._name == name and acc._local == address:
+                acc.checkIn()
+    def checkoutAccomodation(self,name,address):
+        for acc in self._listAccommodation:
+            if acc._name == name and acc._local == address:
+                acc.checkOut()
+    def getAccommodations(self):
+        s = ''
+        for e in self._listAccommodation:
+            s+=e.__str__()+'\n'
+        return s
+        
+    def getVehicles(self):
+        s = ''
+        for e in self._listVehicles:
+            s+=e.__str__()+'\n'
+        return s
 
 
-
-    def addAccomodation(self.acc):
-        pass
-
-
-
-
-
-
-
-
-
-
-
-def test():
-    ap = Apartment('grande hotel 5estrelas','ali algures',997.07,5,2,True)
-    print(ap)
-    ap.checkOut()
-    print(ap)
-    ap.checkIn()
-    print(ap)
-    ap.checkIn()
-    print(ap)
-    ap2 =  Apartment('grande 5estrelas','ali algures',997.07,5,2,True)
-    print(ap2)
-    r = Room('patati','patata',98,5,'single')
-    print(r)
-    r2 =  Room('bom','sitio',98,5,'twin',False)
-    print(r2)
-
-
-if __name__ == '__main__':
-    test()

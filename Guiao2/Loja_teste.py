@@ -1,5 +1,4 @@
-from Guiao2.productClasses import Book, Phone, Television, HomeAppliance
- 
+from productClasses import Book, Phone, Television, HomeAppliance
 
 def teste():
 

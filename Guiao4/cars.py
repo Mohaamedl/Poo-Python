@@ -10,22 +10,22 @@ class Vehicle(ABC):
     
     def __str__(self):
         return f'Brand : {self._brand} {self._model}, plate number : {self._plateNum} '
-    def take(self):
+    def rent(self):
         try:
-            if self._available == False
+            if self._available == False:
                 raise Exception('Not available')
             self._available = False
 
         except Exception as e:
-            print(e)
+            print(self.getBrand(),self.getModel,e)
     def devolution(self):
         try:
-            if self._available == True
+            if self._available == True:
                 raise Exception('already available')
             self._available = True
 
         except Exception as e:
-            print(e)
+            print(self.getBrand(),self.getModel,e)
     def detType(self):
         pass
 
@@ -43,11 +43,10 @@ class Vehicle(ABC):
 
 
 
-   
 
 class EletricVehicle(Vehicle):
-    def __init__(self,brand:str,plateNum:str):
-        super().__init__(brand,plateNum)
+    def __init__(self,brand:str,model:str,plateNum:str,maxSpeed:int):
+        super().__init__(brand,model,plateNum,maxSpeed)
         self._type = "Eletric"
 
 
@@ -57,8 +56,8 @@ class EletricVehicle(Vehicle):
 
 
 class DieselVehicle(Vehicle):
-    def __init__(self,brand:str,plateNum:str):
-        super().__init__(brand,plateNum)
+    def __init__(self,brand:str,model:str,plateNum:str,maxSpeed:int):
+        super().__init__(brand,model,plateNum,maxSpeed)
         self._type = "Diesel"
 
 
@@ -69,8 +68,8 @@ class DieselVehicle(Vehicle):
 
 
 class GasolineVehicle(Vehicle):
-    def __init__(self,brand:str,plateNum:str):
-        super().__init__(brand,plateNum)
+    def __init__(self,brand:str,model:str,plateNum:str,maxSpeed:int):
+        super().__init__(brand,model,plateNum,maxSpeed)
         self._type = "Gasoline"
 
     

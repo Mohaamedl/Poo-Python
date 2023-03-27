@@ -59,7 +59,7 @@ class Accommodation:
                 raise Exception("Not available")
             self._availability = False
         except Exception as e :
-            print(e)
+            print(self.getName,e)
     
     def checkOut(self):
         try:
@@ -67,7 +67,7 @@ class Accommodation:
                 raise Exception("Already available")
             self._availability = True
         except Exception as e :
-            print(e)
+            print(self.getName,e)
     
 
 
@@ -85,7 +85,9 @@ class Apartment(Accommodation):
     def getNumRooms(self):
         return self._numRooms
 class Room(Accommodation):
+    
     _typeList = ['single','double','twin','triple']
+    
     def __init__(self,name:str,local:str,pricePerNight:float,evaluation:float,type:str,availability=True):
         try:
             if not self.__class__._typeList.__contains__(type):

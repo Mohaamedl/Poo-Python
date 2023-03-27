@@ -1,5 +1,5 @@
 from agency import *
-from Accommodation import *
+from accommodation import *
 from cars import *
 
 '''Criação  dos  diversos  objetos  referidos  acima
@@ -8,41 +8,41 @@ from cars import *
 def main():
 
     # criar uma agência
-    agencia = AgenciaDeViagens("MyTravel","Aveiro")
+    agencia = Agency("MyTravel","Aveiro")
 
     # adcionar alguns apartamentos   
-    apartamentos = [Apartamento ("T4","Aveiro",1500,4), Apartamento ("T3","Albufeira",900,3), Apartamento ("T3","Lisboa",1000,3) ]
-    apartamentos[0].checkin()
+    apartamentos = [Apartment("T4","Aveiro",1500,5,4), Apartment ("T3","Albufeira",900,5,3), Apartment ("T3","Lisboa",1000,5,3) ] # adicionei avaliação (4º argumento)
+    apartamentos[0].checkIn()
     for ap in apartamentos:
-        agencia.adicionar_alojamento(ap) 
+        agencia.addAccomodation(ap) 
         
 
     # adicionar alguns quartos de hotel
-    quartos  = [QuartoDeHotel ("Quarto 23","Hotel Américas (Aveiro)",200,"Duplo"), QuartoDeHotel ("Quarto 2","Hotel Imperial (Aveiro)",100,"Simples")]
-    quartos[1].checkin()
+    quartos  = [Room ("Quarto 23","Hotel Américas (Aveiro)",200,5,"double"), Room ("Quarto 2","Hotel Imperial (Aveiro)",100,5,"single")]
+    quartos[1].checkIn()
     for quarto in quartos:
-        agencia.adicionar_alojamento(quarto) 
+        agencia.addAccomodation(quarto) 
     
     # adicionar algumas viaturas
-    viaturas = [CarroEletrico("Tesla", "X","OF-04-90",200), CarroGasoleo("VW", "Golf", "AA-11-AA", 100), CarroGasolina("VW", "Golf", "AA-12-AA", 120)] 
+    viaturas = [EletricVehicle("Tesla", "X","OF-04-90",200), DieselVehicle("VW", "Golf", "AA-11-AA", 100), GasolineVehicle("VW", "Golf", "AA-12-AA", 120)] 
     for viatura in viaturas:
-        agencia.adicionar_viatura(viatura)
+        agencia.addVehicle(viatura)
 
     # processamento ao nível da agência do aluguer de viaturas
-    agencia.alugar_viatura("Tesla","X","OF-04-90")
-    agencia.alugar_viatura("Tesla","Y","FF-14-09")
+    agencia.rentVehicle("Tesla","X","OF-04-90")
+    agencia.rentVehicle("Tesla","Y","FF-14-09")
     
     
     # processamento ao nível da agência do aluguer de alojamentos
-    agencia.alugar_alojamento("T4","Aveiro")
-    agencia.alugar_alojamento("Quarto 23","Hotel Américas (Aveiro)")
-    agencia.alugar_alojamento("Quarto 24","Hotel Américas (Aveiro)")
-     
+    agencia.rentAccomodation("T4","Aveiro")
+    agencia.rentAccomodation("Quarto 23","Hotel Américas (Aveiro)")
+    agencia.rentAccomodation("Quarto 24","Hotel Américas (Aveiro)")
+
     # processamento ao nível da agência do ckeckout de um alojamento
-    agencia.checkout_alojamento("T4","Aveiro")
+    agencia.checkoutAccomodation("T4","Aveiro")
     
     # processamento ao nível da agência da devolução de um carro que se encontrava alugado
-    agencia.devolucao_viatura("Tesla", "X","OF-04-90")
+    agencia.devolutionVehicle("Tesla", "X","OF-04-90")
     
     # mostrar informação sobre todos alojamentos e viaturas da agência
     print("\n----------------------")
