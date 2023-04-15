@@ -19,12 +19,13 @@ def main():
     armazem_origem.receber(Mercadoria("Parafusos",4000,"CP CARGO"))
     armazem_origem.receber(Mercadoria("Cereais",4000,"CP CARGO"))
     armazem_origem.receber(Mercadoria("Motos",5000,"APRILIA"))
+    print(armazem_origem)
 
     # criar comboio com 3 vagões, todos com carga máxima de 10 toneladas
-    comboio = Comboio([10, 10, 10])
+    #comboio = Comboio([10, 10, 10])
     
     # outro comboio
-    #comboio = Comboio([10, 12, 8, 6])
+    comboio = Comboio([10, 12, 8, 17])
     
     # comboio com configuração aleatória (até 20 carruagens de 2 a 15 toneladas)
     #num_vagoes = random.randint(3,7)
@@ -35,10 +36,10 @@ def main():
     comboio.carregar(armazem_origem)
     
     # descomentar para mostra comboio (chama __str__())
-    #print(comboio)
+    print(comboio)
 
     # fazer viagem 
-    comboio.fazer_viagem(origem, destino)
+    comboio.fazerViagem(origem, destino)
     
     # descarregar no destino
     comboio.descarregar()  # descarrega e mostra

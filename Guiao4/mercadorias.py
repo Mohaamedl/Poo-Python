@@ -5,4 +5,4 @@ class Mercadoria:
         self._empresa = empresa
         
     def __str__(self):
-        return f''
+        return f'{self._nome}, {self._peso} Kg, {self._empresa}'
