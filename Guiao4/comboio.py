@@ -11,7 +11,8 @@ class Comboio:
     def __str__(self):
         s = 'Comboio com ' + str(self._listaVagoes.size())+' vagoes\n'
         l =Stack()
-        for i in range(self._listaVagoes.size()):
+        j=self._listaVagoes.size()
+        for i in range(j):
             vagao = self._listaVagoes.top()
             l.push(vagao)
             s += vagao.__str__() +'\n'
@@ -21,30 +22,29 @@ class Comboio:
     def carregar(self,armz): # processo de carregamento começa 
         lista = armz.getListaMercadorias()
         listaVag = []
-        for i in range(self._listaVagoes.size()): # lista com vagoes listados com o primeiro sendo o mais proximo da locomotiva
+        j=self._listaVagoes.size()
+        for i in range(j): # lista com vagoes listados com o primeiro sendo o mais proximo da locomotiva
             listaVag.insert(0,self._listaVagoes.top())
             self._listaVagoes.pop()
+            
         self._listaVagoes.clear()
-        l = lista
+        l = lista.copy()
         for vagao in listaVag:
             for item in lista:
-                if vagao._capAt <= item._peso:# se o vagao estiver cheio quebra para seguir ao proximo
-                    self._listaVagoes.push(vagao) # cola-se o vagao ao comboio
-                    
-                else:
+                if vagao._capAt >= item._peso:# se o vagao estiver cheio quebra para seguir ao proximo
                     vagao.addItem(item) # se nao, adiciona e remove da lista do que ha para adicionar
                     l.remove(item)
-                lista = l
-            if len(lista)==0:
-                self._listaVagoes.push(vagao)
+            lista = l.copy()
+            self._listaVagoes.push(vagao) # cola-se o vagao ao comboio
         armz.setListaMercadorias(l) # nova lista de mercadorias, com o que sobrou
-        #print(self._listaVagoes.size(),'= Quantos vagoes cheios')
+
 
 
 
 
     def fazerViagem(self,origem,destino):
         self._origem = origem
+        #... vrom vromm
         self._destino = destino
     
     
@@ -58,7 +58,7 @@ class Comboio:
                 arm._listaMercadorias.append(it)
             vagao.vagClear() # tira os itens
             self._listaVagoes.pop() # e o desconecta do comboio para pegar o proximo
-        print(arm,'-armazem destino') # mostra
+        print(arm) # mostra
 
 class Vagao:
     _id = 10000
@@ -72,7 +72,7 @@ class Vagao:
     def __str__(self):
         s=''
         for i in self._items:
-            s+=i.__str__()+'  '
+            s+=i.__str__()+' ; '
         return f'Vagao {self._id}: capacidade max : {self._capMax} kg: capacidade atual: {self._capAt} kg: Mercadorias: {s}'
 
     def addItem(self,item):

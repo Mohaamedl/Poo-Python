@@ -25,7 +25,7 @@ def main():
     #comboio = Comboio([10, 10, 10])
     
     # outro comboio
-    comboio = Comboio([10, 12, 8, 17])
+    comboio = Comboio([12, 11,11])
     
     # comboio com configuração aleatória (até 20 carruagens de 2 a 15 toneladas)
     #num_vagoes = random.randint(3,7)
