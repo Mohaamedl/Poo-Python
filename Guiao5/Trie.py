@@ -30,21 +30,16 @@ class Trie(object):
         self.root = TrieNode("")
     
     def insert(self, word):
-        """Insert a word into the trie"""
         node = self.root
-        
-        # Loop through each character in the word
-        # Check if there is no child containing the character, create a new child for the current node
-        for char in word:
+        for i in range(len(word)):
+            char = word[i]
             if char in node.children:
                 node = node.children[char]
             else:
-                # If a character is not found,
-                # create a new node in the trie
+                # If a character is not found, create a new node in the trie
                 new_node = TrieNode(char)
                 node.children[char] = new_node
                 node = new_node
-        
         # Mark the end of a word
         node.is_end = True
 
@@ -91,25 +86,32 @@ class Trie(object):
 
 
 def test():
-    iT = tm.time()
-    t = Trie()
     filename = 'Guiao5\palavras2.txt'
-    with open(filename,'r',encoding='utf-8') as file:
-        word = file.readline().split('\n')[0]
-        print(word)
-        while not word =='':
-            t.insert(word)
-            word = file.readline().split('\n')[0]
-    print(t.insert("was"))
-    print(t.insert("word"))
-    print(t.insert("war"))
-    print(t.insert("what"))
-    print(t.insert("where"))
-    print(t.query("wh"))
 
-    print(t.query('aze'))
-    fT = tm.time()
-    print(f'done in {fT-iT} seconds')
+    option = input('Menu--------\n1 - search a word\npress enter to exit\n')
+    while option !='':
+        if int(option) ==1:
+            toResearch = input('Word to research: ')
+            t = Trie()
+            iT = tm.time()
+            with open(filename,'r',encoding='utf-8') as file:
+                
+                #words = list(x.replace('\n','') for x in file.readlines()) # other way 
+                #print(words)
+                #for word in words :
+                #    t.insert(word)
+                word = file.readline().replace('\n','')
+                while word!='':
+                    t.insert(word)
+                    word = file.readline()[:-1]
+            
+            researched = t.query(toResearch)
+            print(researched)
+            fT = tm.time()
+            tt = fT-iT
+            print(f'done in {tt} seconds')
+            option = input('Menu--------\n1 - search a word\npress enter to exit\n')
+    print('bye')
 
 
 if __name__ == "__main__":
