@@ -75,3 +75,4 @@ class GasolineVehicle(Vehicle):
     
     def getType(self):
         return self._type
+    

@@ -1,0 +1,47 @@
+@startuml yoti
+class Room{
+    #coins = 0
+    #barProgress = 0
+    #maxHints = 2
+    #hide=True
+    #hints[]
+
+    #addCoins()
+    #showCoins()
+    #removeCoins()
+
+    #showBarProgress()
+    #changeBarProgress()
+    #resetBarProgress()
+
+    #showHintModal()
+    #showHintModalConfirm()
+    #hideHintModal()
+    #hideHintModalConfirm()
+
+    #showRoomModal()
+    #hideRoomModal()
+
+    #showMenu()
+    #hideMenu()
+}
+class Level1{
+    
+    challenge_1()
+    
+
+}
+class Level2{
+    challenge_1()
+    challenge_2()
+    
+}
+class Level3{
+    challenge_1()
+    challenge_2()
+    challenge_3()
+}
+Room *-- Level1
+Room *-- Level2
+Room *-- Level3
+@enduml
